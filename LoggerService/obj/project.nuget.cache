@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "NwVLzniTbgs=",
+  "success": true,
+  "projectFilePath": "C:\\Projects\\DotNet\\Web\\GravitelBitrix24Mediator\\GravitelBitrix24Mediator\\LoggerService\\LoggerService.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Sile9t\\.nuget\\packages\\nlog\\5.3.4\\nlog.5.3.4.nupkg.sha512"
+  ],
+  "logs": []
+}

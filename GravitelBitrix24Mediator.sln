@@ -1,0 +1,55 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.10.35027.167
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GravitelBitrix24Mediator", "GravitelBitrix24Mediator\GravitelBitrix24Mediator.csproj", "{705A3D12-9564-45AB-9047-B02F392B67FD}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Entities", "Models\Entities.csproj", "{17898192-83F4-4210-A164-FFE4F2089D00}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Contracts", "Contracts\Contracts.csproj", "{EBEDACCF-6947-462F-9DFC-81C0AF6CEFCE}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LoggerService", "LoggerService\LoggerService.csproj", "{EC72CEE7-7F06-49DC-BAA4-09A0B7B84708}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Services", "Services\Services.csproj", "{9F380BF9-D690-4424-8F4A-7C9679120BC3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Services.Contracts", "Services.Contracts\Services.Contracts.csproj", "{3BA2278D-9405-41CA-A684-4ED7232D3AA4}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{705A3D12-9564-45AB-9047-B02F392B67FD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{705A3D12-9564-45AB-9047-B02F392B67FD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{705A3D12-9564-45AB-9047-B02F392B67FD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{705A3D12-9564-45AB-9047-B02F392B67FD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{17898192-83F4-4210-A164-FFE4F2089D00}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{17898192-83F4-4210-A164-FFE4F2089D00}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{17898192-83F4-4210-A164-FFE4F2089D00}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{17898192-83F4-4210-A164-FFE4F2089D00}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EBEDACCF-6947-462F-9DFC-81C0AF6CEFCE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EBEDACCF-6947-462F-9DFC-81C0AF6CEFCE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EBEDACCF-6947-462F-9DFC-81C0AF6CEFCE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EBEDACCF-6947-462F-9DFC-81C0AF6CEFCE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EC72CEE7-7F06-49DC-BAA4-09A0B7B84708}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EC72CEE7-7F06-49DC-BAA4-09A0B7B84708}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EC72CEE7-7F06-49DC-BAA4-09A0B7B84708}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EC72CEE7-7F06-49DC-BAA4-09A0B7B84708}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9F380BF9-D690-4424-8F4A-7C9679120BC3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9F380BF9-D690-4424-8F4A-7C9679120BC3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9F380BF9-D690-4424-8F4A-7C9679120BC3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9F380BF9-D690-4424-8F4A-7C9679120BC3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3BA2278D-9405-41CA-A684-4ED7232D3AA4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3BA2278D-9405-41CA-A684-4ED7232D3AA4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3BA2278D-9405-41CA-A684-4ED7232D3AA4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3BA2278D-9405-41CA-A684-4ED7232D3AA4}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {1D5AE67A-4879-4D98-9528-98A7901982B2}
+	EndGlobalSection
+EndGlobal

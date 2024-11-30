@@ -1,0 +1,15 @@
+C:\Projects\DotNet\Web\GravitelBitrix24Mediator\GravitelBitrix24Mediator\LoggerService\bin\Debug\net8.0\LoggerService.deps.json
+C:\Projects\DotNet\Web\GravitelBitrix24Mediator\GravitelBitrix24Mediator\LoggerService\bin\Debug\net8.0\LoggerService.dll
+C:\Projects\DotNet\Web\GravitelBitrix24Mediator\GravitelBitrix24Mediator\LoggerService\bin\Debug\net8.0\LoggerService.pdb
+C:\Projects\DotNet\Web\GravitelBitrix24Mediator\GravitelBitrix24Mediator\LoggerService\bin\Debug\net8.0\Contracts.dll
+C:\Projects\DotNet\Web\GravitelBitrix24Mediator\GravitelBitrix24Mediator\LoggerService\bin\Debug\net8.0\Contracts.pdb
+C:\Projects\DotNet\Web\GravitelBitrix24Mediator\GravitelBitrix24Mediator\LoggerService\obj\Debug\net8.0\LoggerService.csproj.AssemblyReference.cache
+C:\Projects\DotNet\Web\GravitelBitrix24Mediator\GravitelBitrix24Mediator\LoggerService\obj\Debug\net8.0\LoggerService.GeneratedMSBuildEditorConfig.editorconfig
+C:\Projects\DotNet\Web\GravitelBitrix24Mediator\GravitelBitrix24Mediator\LoggerService\obj\Debug\net8.0\LoggerService.AssemblyInfoInputs.cache
+C:\Projects\DotNet\Web\GravitelBitrix24Mediator\GravitelBitrix24Mediator\LoggerService\obj\Debug\net8.0\LoggerService.AssemblyInfo.cs
+C:\Projects\DotNet\Web\GravitelBitrix24Mediator\GravitelBitrix24Mediator\LoggerService\obj\Debug\net8.0\LoggerService.csproj.CoreCompileInputs.cache
+C:\Projects\DotNet\Web\GravitelBitrix24Mediator\GravitelBitrix24Mediator\LoggerService\obj\Debug\net8.0\LoggerSe.E7AEA5A8.Up2Date
+C:\Projects\DotNet\Web\GravitelBitrix24Mediator\GravitelBitrix24Mediator\LoggerService\obj\Debug\net8.0\LoggerService.dll
+C:\Projects\DotNet\Web\GravitelBitrix24Mediator\GravitelBitrix24Mediator\LoggerService\obj\Debug\net8.0\refint\LoggerService.dll
+C:\Projects\DotNet\Web\GravitelBitrix24Mediator\GravitelBitrix24Mediator\LoggerService\obj\Debug\net8.0\LoggerService.pdb
+C:\Projects\DotNet\Web\GravitelBitrix24Mediator\GravitelBitrix24Mediator\LoggerService\obj\Debug\net8.0\ref\LoggerService.dll

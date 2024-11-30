@@ -1,0 +1,9 @@
+C:\Projects\DotNet\Web\GravitelBitrix24Mediator\GravitelBitrix24Mediator\GravitelBitrix24Mediator\obj\Debug\net8.0\GravitelBitrix24Mediator.csproj.AssemblyReference.cache
+C:\Projects\DotNet\Web\GravitelBitrix24Mediator\GravitelBitrix24Mediator\GravitelBitrix24Mediator\obj\Debug\net8.0\GravitelBitrix24Mediator.GeneratedMSBuildEditorConfig.editorconfig
+C:\Projects\DotNet\Web\GravitelBitrix24Mediator\GravitelBitrix24Mediator\GravitelBitrix24Mediator\obj\Debug\net8.0\GravitelBitrix24Mediator.AssemblyInfoInputs.cache
+C:\Projects\DotNet\Web\GravitelBitrix24Mediator\GravitelBitrix24Mediator\GravitelBitrix24Mediator\obj\Debug\net8.0\GravitelBitrix24Mediator.AssemblyInfo.cs
+C:\Projects\DotNet\Web\GravitelBitrix24Mediator\GravitelBitrix24Mediator\GravitelBitrix24Mediator\obj\Debug\net8.0\GravitelBitrix24Mediator.csproj.CoreCompileInputs.cache
+C:\Projects\DotNet\Web\GravitelBitrix24Mediator\GravitelBitrix24Mediator\GravitelBitrix24Mediator\obj\Debug\net8.0\GravitelBitrix24Mediator.MvcApplicationPartsAssemblyInfo.cs
+C:\Projects\DotNet\Web\GravitelBitrix24Mediator\GravitelBitrix24Mediator\GravitelBitrix24Mediator\obj\Debug\net8.0\GravitelBitrix24Mediator.MvcApplicationPartsAssemblyInfo.cache
+C:\Projects\DotNet\Web\GravitelBitrix24Mediator\GravitelBitrix24Mediator\GravitelBitrix24Mediator\obj\Debug\net8.0\GravitelBitrix24Mediator.RazorAssemblyInfo.cache
+C:\Projects\DotNet\Web\GravitelBitrix24Mediator\GravitelBitrix24Mediator\GravitelBitrix24Mediator\obj\Debug\net8.0\GravitelBitrix24Mediator.RazorAssemblyInfo.cs

@@ -1,0 +1,11 @@
+C:\Projects\DotNet\Web\GravitelBitrix24Mediator\GravitelBitrix24Mediator\Services.Contracts\bin\Debug\net8.0\Services.Contracts.deps.json
+C:\Projects\DotNet\Web\GravitelBitrix24Mediator\GravitelBitrix24Mediator\Services.Contracts\bin\Debug\net8.0\Services.Contracts.dll
+C:\Projects\DotNet\Web\GravitelBitrix24Mediator\GravitelBitrix24Mediator\Services.Contracts\bin\Debug\net8.0\Services.Contracts.pdb
+C:\Projects\DotNet\Web\GravitelBitrix24Mediator\GravitelBitrix24Mediator\Services.Contracts\obj\Debug\net8.0\Services.Contracts.GeneratedMSBuildEditorConfig.editorconfig
+C:\Projects\DotNet\Web\GravitelBitrix24Mediator\GravitelBitrix24Mediator\Services.Contracts\obj\Debug\net8.0\Services.Contracts.AssemblyInfoInputs.cache
+C:\Projects\DotNet\Web\GravitelBitrix24Mediator\GravitelBitrix24Mediator\Services.Contracts\obj\Debug\net8.0\Services.Contracts.AssemblyInfo.cs
+C:\Projects\DotNet\Web\GravitelBitrix24Mediator\GravitelBitrix24Mediator\Services.Contracts\obj\Debug\net8.0\Services.Contracts.csproj.CoreCompileInputs.cache
+C:\Projects\DotNet\Web\GravitelBitrix24Mediator\GravitelBitrix24Mediator\Services.Contracts\obj\Debug\net8.0\Services.Contracts.dll
+C:\Projects\DotNet\Web\GravitelBitrix24Mediator\GravitelBitrix24Mediator\Services.Contracts\obj\Debug\net8.0\refint\Services.Contracts.dll
+C:\Projects\DotNet\Web\GravitelBitrix24Mediator\GravitelBitrix24Mediator\Services.Contracts\obj\Debug\net8.0\Services.Contracts.pdb
+C:\Projects\DotNet\Web\GravitelBitrix24Mediator\GravitelBitrix24Mediator\Services.Contracts\obj\Debug\net8.0\ref\Services.Contracts.dll
