@@ -4,6 +4,6 @@
     {
         public long Id { get; init; }
         public string? Name { get; init; }
-        public PhoneDto[]? Phone { get; init; }
+        public required PhoneDto[] Phone { get; init; }
     }
 }

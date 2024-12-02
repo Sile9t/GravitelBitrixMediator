@@ -2984,10 +2984,66 @@
           "bin/placeholder/Entities.dll": {}
         }
       },
+      "LoggerService/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v8.0",
+        "dependencies": {
+          "Contracts": "1.0.0",
+          "NLog": "5.3.4"
+        },
+        "compile": {
+          "bin/placeholder/LoggerService.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/LoggerService.dll": {}
+        }
+      },
+      "OuterSource/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v8.0",
+        "dependencies": {
+          "Newtonsoft.Json": "13.0.3"
+        },
+        "compile": {
+          "bin/placeholder/OuterSource.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/OuterSource.dll": {}
+        }
+      },
+      "Repository/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v8.0",
+        "dependencies": {
+          "Entities": "1.0.0",
+          "OuterSource": "1.0.0",
+          "Repository.Contracts": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/Repository.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Repository.dll": {}
+        }
+      },
+      "Repository.Contracts/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v8.0",
+        "dependencies": {
+          "Entities": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/Repository.Contracts.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Repository.Contracts.dll": {}
+        }
+      },
       "Services/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v8.0",
         "dependencies": {
+          "Contracts": "1.0.0",
           "Entities": "1.0.0",
           "Newtonsoft.Json": "13.0.3",
           "RestSharp": "112.1.0",
@@ -3004,7 +3060,9 @@
         "type": "project",
         "framework": ".NETCoreApp,Version=v8.0",
         "dependencies": {
-          "Entities": "1.0.0"
+          "Entities": "1.0.0",
+          "Repository": "1.0.0",
+          "Repository.Contracts": "1.0.0"
         },
         "compile": {
           "bin/placeholder/Services.Contracts.dll": {}
@@ -8548,6 +8606,26 @@
       "path": "../Models/Entities.csproj",
       "msbuildProject": "../Models/Entities.csproj"
     },
+    "LoggerService/1.0.0": {
+      "type": "project",
+      "path": "../LoggerService/LoggerService.csproj",
+      "msbuildProject": "../LoggerService/LoggerService.csproj"
+    },
+    "OuterSource/1.0.0": {
+      "type": "project",
+      "path": "../OuterSource/OuterSource.csproj",
+      "msbuildProject": "../OuterSource/OuterSource.csproj"
+    },
+    "Repository/1.0.0": {
+      "type": "project",
+      "path": "../Repository/Repository.csproj",
+      "msbuildProject": "../Repository/Repository.csproj"
+    },
+    "Repository.Contracts/1.0.0": {
+      "type": "project",
+      "path": "../Repository.Contracts/Repository.Contracts.csproj",
+      "msbuildProject": "../Repository.Contracts/Repository.Contracts.csproj"
+    },
     "Services/1.0.0": {
       "type": "project",
       "path": "../Services/Services.csproj",
@@ -8563,10 +8641,14 @@
     "net8.0": [
       "Contracts >= 1.0.0",
       "Entities >= 1.0.0",
+      "LoggerService >= 1.0.0",
       "Microsoft.AspNetCore.Mvc >= 2.2.0",
       "Microsoft.AspNetCore.Mvc.Core >= 2.2.5",
       "NLog >= 5.3.4",
       "Newtonsoft.Json >= 13.0.3",
+      "OuterSource >= 1.0.0",
+      "Repository >= 1.0.0",
+      "Repository.Contracts >= 1.0.0",
       "RestSharp >= 112.1.0",
       "Services >= 1.0.0",
       "Services.Contracts >= 1.0.0",
@@ -8609,8 +8691,20 @@
             "C:\\Projects\\DotNet\\Web\\GravitelBitrix24Mediator\\GravitelBitrix24Mediator\\Contracts\\Contracts.csproj": {
               "projectPath": "C:\\Projects\\DotNet\\Web\\GravitelBitrix24Mediator\\GravitelBitrix24Mediator\\Contracts\\Contracts.csproj"
             },
+            "C:\\Projects\\DotNet\\Web\\GravitelBitrix24Mediator\\GravitelBitrix24Mediator\\LoggerService\\LoggerService.csproj": {
+              "projectPath": "C:\\Projects\\DotNet\\Web\\GravitelBitrix24Mediator\\GravitelBitrix24Mediator\\LoggerService\\LoggerService.csproj"
+            },
             "C:\\Projects\\DotNet\\Web\\GravitelBitrix24Mediator\\GravitelBitrix24Mediator\\Models\\Entities.csproj": {
               "projectPath": "C:\\Projects\\DotNet\\Web\\GravitelBitrix24Mediator\\GravitelBitrix24Mediator\\Models\\Entities.csproj"
+            },
+            "C:\\Projects\\DotNet\\Web\\GravitelBitrix24Mediator\\GravitelBitrix24Mediator\\OuterSource\\OuterSource.csproj": {
+              "projectPath": "C:\\Projects\\DotNet\\Web\\GravitelBitrix24Mediator\\GravitelBitrix24Mediator\\OuterSource\\OuterSource.csproj"
+            },
+            "C:\\Projects\\DotNet\\Web\\GravitelBitrix24Mediator\\GravitelBitrix24Mediator\\Repository.Contracts\\Repository.Contracts.csproj": {
+              "projectPath": "C:\\Projects\\DotNet\\Web\\GravitelBitrix24Mediator\\GravitelBitrix24Mediator\\Repository.Contracts\\Repository.Contracts.csproj"
+            },
+            "C:\\Projects\\DotNet\\Web\\GravitelBitrix24Mediator\\GravitelBitrix24Mediator\\Repository\\Repository.csproj": {
+              "projectPath": "C:\\Projects\\DotNet\\Web\\GravitelBitrix24Mediator\\GravitelBitrix24Mediator\\Repository\\Repository.csproj"
             },
             "C:\\Projects\\DotNet\\Web\\GravitelBitrix24Mediator\\GravitelBitrix24Mediator\\Services.Contracts\\Services.Contracts.csproj": {
               "projectPath": "C:\\Projects\\DotNet\\Web\\GravitelBitrix24Mediator\\GravitelBitrix24Mediator\\Services.Contracts\\Services.Contracts.csproj"

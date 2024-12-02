@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("GravitelBitrix24Mediator")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+e2cdda260acf95a13dc11c8a811629accdeef95f")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+287863e8fb53c0bbc806a704bcd994a4648917db")]
 [assembly: System.Reflection.AssemblyProductAttribute("GravitelBitrix24Mediator")]
 [assembly: System.Reflection.AssemblyTitleAttribute("GravitelBitrix24Mediator")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

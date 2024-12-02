@@ -2,8 +2,8 @@
 {
     public record GravitelClientCallInfoDto
     {
-        public string? Id { get; set; }
-        public string? ClientPhone { get; set; }
-        public string? Phone { get; set; }
+        public required string Id { get; init; }
+        public required string ClientPhone { get; init; }
+        public required string Phone { get; init; }
     }
 }

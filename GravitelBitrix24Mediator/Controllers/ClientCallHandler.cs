@@ -12,16 +12,14 @@ namespace GravitelBitrix24Mediator.Controllers
     [Route("crm_url")]
     public class ClientCallHandler : Controller
     {
-        private IBitrix _bitrix;
+        private readonly IServiceManager _service;
         private List<CompanyDto> _companyList = new();
         private List<DealDto> _dealList = new();
         private List<LeadDto> _leadList = new();
         private List<long> _assignedUserIdsList = new();
 
-        public ClientCallHandler(IBitrix bitrix)
-        {
-            _bitrix = bitrix;
-        }
+        public ClientCallHandler(IServiceManager service) =>
+            _service = service;
 
         [HttpPost("client")]
         public async Task<IActionResult> Client([FromBody] GravitelClientCallInfoDto? callInfo)
