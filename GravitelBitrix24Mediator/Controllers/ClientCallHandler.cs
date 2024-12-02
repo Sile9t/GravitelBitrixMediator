@@ -143,10 +143,14 @@ namespace GravitelBitrix24Mediator.Controllers
         [HttpPost("event")]
         public async Task<IActionResult> Event([FromBody] EventInfoDto eventInfo)
         {
+            if (String.Equals(eventInfo.Direction, "out", StringComparison.CurrentCultureIgnoreCase))
+                return Ok(eventInfo);
+
             //На основании статуса звонка выбираем алгоритм
             switch (eventInfo.Stage)
             {
                 case "alerting": //Активный дозвон
+                    //TODO
                     //Ищем по номеру extension группу, в которую входит пользователь
                     var userGroup;
 
@@ -226,11 +230,15 @@ namespace GravitelBitrix24Mediator.Controllers
             return Deserialize<RegistredDealForCallDto>(response);
         }
 
-        private void ShowCall()
+        private void ShowCall(string CallId, int UserId)
         {
-            string response = _bitrix.SendCommand("telephony.externalCall.show");
+            ShowCall(CallId, [ UserId ]);
+        }
 
-
+        private void ShowCall(string CallId, int[] UserId)
+        {
+            string response = _bitrix.SendCommand("telephony.externalCall.show",
+                $" CALL_ID:{CallId}, USER_ID: {UserId}");
         }
 
         private CallHistory[]? FinishCall(CallInfoDto callInfo)

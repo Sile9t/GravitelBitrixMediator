@@ -11,8 +11,4 @@
     <PackageReference Include="RestSharp" Version="112.1.0" />
   </ItemGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\Services.Contracts\Services.Contracts.csproj" />
-  </ItemGroup>
-
 </Project>

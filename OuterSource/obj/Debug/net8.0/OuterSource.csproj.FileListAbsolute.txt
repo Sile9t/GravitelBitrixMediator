@@ -1,0 +1,6 @@
+C:\Projects\DotNet\Web\GravitelBitrix24Mediator\GravitelBitrix24Mediator\OuterSource\obj\Debug\net8.0\OuterSource.csproj.AssemblyReference.cache
+C:\Projects\DotNet\Web\GravitelBitrix24Mediator\GravitelBitrix24Mediator\OuterSource\obj\Debug\net8.0\OuterSource.GeneratedMSBuildEditorConfig.editorconfig
+C:\Projects\DotNet\Web\GravitelBitrix24Mediator\GravitelBitrix24Mediator\OuterSource\obj\Debug\net8.0\OuterSource.AssemblyInfoInputs.cache
+C:\Projects\DotNet\Web\GravitelBitrix24Mediator\GravitelBitrix24Mediator\OuterSource\obj\Debug\net8.0\OuterSource.AssemblyInfo.cs
+C:\Projects\DotNet\Web\GravitelBitrix24Mediator\GravitelBitrix24Mediator\OuterSource\obj\Debug\net8.0\OuterSource.csproj.CoreCompileInputs.cache
+C:\Projects\DotNet\Web\GravitelBitrix24Mediator\GravitelBitrix24Mediator\OuterSource\obj\Debug\net8.0\OuterSource.sourcelink.json

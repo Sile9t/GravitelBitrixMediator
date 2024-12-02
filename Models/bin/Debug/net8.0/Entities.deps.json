@@ -9,8 +9,7 @@
       "Entities/1.0.0": {
         "dependencies": {
           "Newtonsoft.Json": "13.0.3",
-          "RestSharp": "112.1.0",
-          "Services.Contracts": "1.0.0"
+          "RestSharp": "112.1.0"
         },
         "runtime": {
           "Entities.dll": {}
@@ -30,11 +29,6 @@
             "assemblyVersion": "112.1.0.0",
             "fileVersion": "112.1.0.0"
           }
-        }
-      },
-      "Services.Contracts/1.0.0": {
-        "runtime": {
-          "Services.Contracts.dll": {}
         }
       }
     }
@@ -58,11 +52,6 @@
       "sha512": "sha512-bOUGNZqhhv/QeCXHTKEUil846yBjwWXpzPKjO67kFvaAOoF361z7jLY5BMnuZ6WD2WQRA750sNMcK7MSPCQ5Mg==",
       "path": "restsharp/112.1.0",
       "hashPath": "restsharp.112.1.0.nupkg.sha512"
-    },
-    "Services.Contracts/1.0.0": {
-      "type": "project",
-      "serviceable": false,
-      "sha512": ""
     }
   }
 }
