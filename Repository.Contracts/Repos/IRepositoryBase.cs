@@ -1,4 +1,4 @@
-﻿namespace Repository.Contracts
+﻿namespace Repository.Contracts.Repos
 {
     public interface IRepositoryBase
     {

@@ -1,15 +1,15 @@
 ﻿using Entities.Dtos.Bitrix;
 using OuterSource;
-using Repository.Contracts;
+using Repository.Contracts.Repos;
 using System.Text.Json;
 
-namespace Repository
+namespace Repository.Repos
 {
     public class TelephonyRepository : RepositoryBase, ITelephonyRepository
     {
         public TelephonyRepository(Bitrix24Old bitrix) : base(bitrix)
         {
-            
+
         }
 
         public CRMEntityDto[]? GetCrmEntityByPhone(string phone)

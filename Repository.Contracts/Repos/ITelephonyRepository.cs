@@ -1,6 +1,6 @@
 ﻿using Entities.Dtos.Bitrix;
 
-namespace Repository.Contracts
+namespace Repository.Contracts.Repos
 {
     public interface ITelephonyRepository : IRepositoryBase
     {

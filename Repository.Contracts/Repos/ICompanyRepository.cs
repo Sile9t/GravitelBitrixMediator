@@ -1,7 +1,7 @@
 ﻿using Entities.Dtos.Bitrix;
 using Entities.Responses;
 
-namespace Repository.Contracts
+namespace Repository.Contracts.Repos
 {
     public interface ICompanyRepository : IRepositoryBase
     {

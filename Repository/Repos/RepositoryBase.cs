@@ -1,7 +1,7 @@
 ﻿using OuterSource;
-using Repository.Contracts;
+using Repository.Contracts.Repos;
 
-namespace Repository
+namespace Repository.Repos
 {
     public class RepositoryBase : IRepositoryBase
     {
