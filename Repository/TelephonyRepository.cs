@@ -20,15 +20,6 @@ namespace Repository
             return JsonSerializer.Deserialize<CRMEntityDto[]>(response);
         }
 
-        public RegistredDealForCallDto? RegisterCall(DealForCallDto dealInfo)
-        {
-            string body = JsonSerializer.Serialize(dealInfo);
-            string response = _bitrix.SendCommand("telephony.externalCall.register",
-                Body: body);
-
-            return JsonSerializer.Deserialize<RegistredDealForCallDto>(response);
-        }
-
         public void ShowCall(string CallId, int[] UserId)
         {
             ShowCall(CallId, UserId);

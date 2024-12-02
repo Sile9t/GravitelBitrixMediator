@@ -3,5 +3,6 @@
     public interface IRepositoryManager
     {
         ITelephonyRepository Telephony { get; }
+        ICompanyRepository Company { get; }
     }
 }
