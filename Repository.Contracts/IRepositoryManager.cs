@@ -8,5 +8,6 @@ namespace Repository.Contracts
         ICompanyRepository Company { get; }
         ILeadRepository Lead { get; }
         IDealRepository Deal { get; }
+        IContactRepository Contact { get; }
     }
 }
