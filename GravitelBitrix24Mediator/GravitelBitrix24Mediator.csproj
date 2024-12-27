@@ -17,7 +17,11 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Contracts\Contracts.csproj" />
+    <ProjectReference Include="..\LoggerService\LoggerService.csproj" />
     <ProjectReference Include="..\Models\Entities.csproj" />
+    <ProjectReference Include="..\OuterSource\OuterSource.csproj" />
+    <ProjectReference Include="..\Repository.Contracts\Repository.Contracts.csproj" />
+    <ProjectReference Include="..\Repository\Repository.csproj" />
     <ProjectReference Include="..\Services.Contracts\Services.Contracts.csproj" />
     <ProjectReference Include="..\Services\Services.csproj" />
   </ItemGroup>
