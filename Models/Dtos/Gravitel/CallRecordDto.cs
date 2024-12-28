@@ -2,12 +2,15 @@
 {
     public record CallRecordDto
     {
-        public string CallId { get; init; }
-        public string FileName { get; init; }
-        public string? CFileContent { get; init; }
-        public string? RecordUrl { get; init; }
-
-        public bool IsValid => (!String.IsNullOrEmpty(CallId)) &&
-            (!String.IsNullOrEmpty(FileName));
+        public required string Id { get; init; }
+        public long When { get; init; }
+        public required string Direction { get; init; }
+        public required string Result { get; init; }
+        public int Duration { get; init; }
+        public int Provision { get; init; }
+        public string? Client { get; init; }
+        public string? Extension { get; init; }
+        public string? Phone { get; init; }
+        public string? Record { get; init; }
     }
 }

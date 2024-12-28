@@ -7,5 +7,6 @@ namespace Repository.Contracts.Repos
     {
         Response<DealDto>? GetDeal(string id);
         ListResponse<DealDto>? GetDealsByFilter(string filter);
+        Response<bool>? UpdateDeal(long id, string fields);
     }
 }

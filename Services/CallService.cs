@@ -12,6 +12,11 @@ namespace Services
     {
         private readonly ILoggerManager _logger;
         private readonly IRepositoryManager _repository;
+        private List<CompanyDto> _companyList = new();
+        private List<DealDto> _dealList = new();
+        private List<LeadDto> _leadList = new();
+        private List<long> _assignedUserIdsList = new();
+
 
         public CallService(IRepositoryManager repositoryManager, ILoggerManager logger)
         {
@@ -100,7 +105,9 @@ namespace Services
                 {
                     //Если сделок нету, ищем лида по ID клиента
                     var leadsForClient = _repository.Lead
-                        .GetLeadsByFilter($"'CONTACT_ID': {firstClientId}");
+                        .GetLeadsByFilter($"'LOGIC' => 'OR'," +
+                                $"[ 'CONTACT_IDS' => {firstClientId}," +
+                                $"'CONTACT_ID' => {firstClientId} ]");
                     if ((leadsForClient is not null) &&
                         (leadsForClient.Total > 0))
                     {

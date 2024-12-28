@@ -31,5 +31,14 @@ namespace Repository.Repos
 
             return JsonSerializer.Deserialize<ListResponse<DealDto>>(response);
         }
+
+        public Response<bool>? UpdateDeal(long id, string fields)
+        {
+            string response = _bitrix.SendCommand("crm.deal.update",
+                $"ID: {id}," +
+                $"'FIELDS => [ {fields} ]");
+
+            return JsonSerializer.Deserialize<Response<bool>>(response);
+        }
     }
 }

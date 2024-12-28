@@ -6,7 +6,9 @@ namespace Repository.Contracts.Repos
     {
         CRMEntityDto[]? GetCrmEntityByPhone(string phone);
         RegistredDealForCallDto? RegisterCall(DealForCallDto dealInfo);
-        void ShowCall(string CallId, int[] UserId);
+        void ShowCall(string CallId, long[] UserId);
+        void HideCall(string CallId, long[] UserId);
         CallHistory[]? FinishCall(CallInfoDto callInfo);
+        void AttachRecord(string CallId, string ResordUrl);
     }
 }

@@ -1,6 +1,8 @@
 ﻿using Entities.Dtos.Bitrix;
 using OuterSource;
 using Repository.Contracts.Repos;
+using System.Numerics;
+using System.Text;
 using System.Text.Json;
 
 namespace Repository.Repos
@@ -15,7 +17,7 @@ namespace Repository.Repos
         public CRMEntityDto[]? GetCrmEntityByPhone(string phone)
         {
             string response = _bitrix.SendCommand("telephony.externalCall.searchCrmEntities",
-                $"PHONE_NUMBER={phone}");
+                $"'PHONE_NUMBER'=>{phone}");
 
             return JsonSerializer.Deserialize<CRMEntityDto[]>(response);
         }
@@ -29,9 +31,34 @@ namespace Repository.Repos
             return JsonSerializer.Deserialize<RegistredDealForCallDto>(response);
         }
 
-        public void ShowCall(string CallId, int[] UserId)
+        public void ShowCall(string CallId, long[] UserId)
         {
-            ShowCall(CallId, UserId);
+            var builder = new StringBuilder();
+            for (int i = 0; i < UserId.Length; i++)
+            {
+                builder.Append($"USER_ID[{i}]={UserId[i]}");
+                if (i < UserId.Length - 1)
+                    builder.Append("&");
+            }
+
+            string response = _bitrix.SendCommand("telephony.externalCall.show",
+                $"'CALL_ID'=>{CallId}, {builder.ToString()}");
+            builder = null;
+        }
+        
+        public void HideCall(string CallId, long[] UserId)
+        {
+            var builder = new StringBuilder();
+            for (int i = 0; i < UserId.Length; i++)
+            {
+                builder.Append($"USER_ID[{i}]={UserId[i]}");
+                if (i < UserId.Length - 1)
+                    builder.Append("&");
+            }
+
+            string response = _bitrix.SendCommand("telephony.externalCall.hide",
+                $"'CALL_ID'=>{CallId}, {builder.ToString()}");
+            builder = null;
         }
 
         public CallHistory[]? FinishCall(CallInfoDto callInfo)
@@ -41,6 +68,12 @@ namespace Repository.Repos
                 Body: body);
 
             return JsonSerializer.Deserialize<CallHistory[]>(response);
+        }
+
+        public void AttachRecord(string CallId, string RecordUrl)
+        {
+            string response = _bitrix.SendCommand("telephony.externalCall.hide",
+                $"CALL_ID=>'{CallId}', 'FILENAME'='{CallId}.mp3','RECORD_URL'='{RecordUrl}'");
         }
     }
 }

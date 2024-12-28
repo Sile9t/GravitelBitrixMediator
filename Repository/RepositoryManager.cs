@@ -13,6 +13,7 @@ namespace Repository
         private readonly Lazy<ILeadRepository> _lead;
         private readonly Lazy<IDealRepository> _deal;
         private readonly Lazy<IContactRepository> _contact;
+        private readonly Lazy<IGroupRepository> _group;
 
         public RepositoryManager(Bitrix24Old bitrix)
         {
@@ -22,6 +23,7 @@ namespace Repository
             _lead = new Lazy<ILeadRepository>(() => new LeadRepository(_bitrix));
             _deal = new Lazy<IDealRepository>(() => new DealRepository(_bitrix));
             _contact = new Lazy<IContactRepository>(() => new ContactRepository(_bitrix));
+            _group = new Lazy<IGroupRepository>(() => new GroupRepository(_bitrix));
         }
 
         public ITelephonyRepository Telephony => _telephony.Value;
@@ -29,5 +31,6 @@ namespace Repository
         public ILeadRepository Lead => _lead.Value;
         public IDealRepository Deal => _deal.Value;
         public IContactRepository Contact => _contact.Value;
+        public IGroupRepository Group => _group.Value;
     }
 }

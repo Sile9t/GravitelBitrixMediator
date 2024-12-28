@@ -13,12 +13,12 @@ namespace Repository.Repos
             
         }
 
-        public Response<GroupDto>? GetGroup(string id)
+        public ListResponse<GroupDto>? GetGroup(long id)
         {
             string response = _bitrix.SendCommand("department.get",
                 $" ID: {id}");
 
-            return JsonSerializer.Deserialize<Response<GroupDto>>(response);
+            return JsonSerializer.Deserialize<ListResponse<GroupDto>>(response);
         } 
     }
 }

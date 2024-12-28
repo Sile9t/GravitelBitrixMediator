@@ -30,5 +30,7 @@ namespace Repository.Repos
 
             return JsonSerializer.Deserialize<ListResponse<CompanyDto>>(response);
         }
+
+
     }
 }

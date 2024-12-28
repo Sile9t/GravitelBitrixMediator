@@ -4,3 +4,17 @@ C:\Projects\DotNet\Web\GravitelBitrix24Mediator\GravitelBitrix24Mediator\Reposit
 C:\Projects\DotNet\Web\GravitelBitrix24Mediator\GravitelBitrix24Mediator\Repository\obj\Debug\net8.0\Repository.AssemblyInfo.cs
 C:\Projects\DotNet\Web\GravitelBitrix24Mediator\GravitelBitrix24Mediator\Repository\obj\Debug\net8.0\Repository.csproj.CoreCompileInputs.cache
 C:\Projects\DotNet\Web\GravitelBitrix24Mediator\GravitelBitrix24Mediator\Repository\obj\Debug\net8.0\Repository.sourcelink.json
+C:\Projects\DotNet\Web\GravitelBitrix24Mediator\GravitelBitrix24Mediator\Repository\bin\Debug\net8.0\Repository.deps.json
+C:\Projects\DotNet\Web\GravitelBitrix24Mediator\GravitelBitrix24Mediator\Repository\bin\Debug\net8.0\Repository.dll
+C:\Projects\DotNet\Web\GravitelBitrix24Mediator\GravitelBitrix24Mediator\Repository\bin\Debug\net8.0\Repository.pdb
+C:\Projects\DotNet\Web\GravitelBitrix24Mediator\GravitelBitrix24Mediator\Repository\bin\Debug\net8.0\Entities.dll
+C:\Projects\DotNet\Web\GravitelBitrix24Mediator\GravitelBitrix24Mediator\Repository\bin\Debug\net8.0\OuterSource.dll
+C:\Projects\DotNet\Web\GravitelBitrix24Mediator\GravitelBitrix24Mediator\Repository\bin\Debug\net8.0\Repository.Contracts.dll
+C:\Projects\DotNet\Web\GravitelBitrix24Mediator\GravitelBitrix24Mediator\Repository\bin\Debug\net8.0\Entities.pdb
+C:\Projects\DotNet\Web\GravitelBitrix24Mediator\GravitelBitrix24Mediator\Repository\bin\Debug\net8.0\OuterSource.pdb
+C:\Projects\DotNet\Web\GravitelBitrix24Mediator\GravitelBitrix24Mediator\Repository\bin\Debug\net8.0\Repository.Contracts.pdb
+C:\Projects\DotNet\Web\GravitelBitrix24Mediator\GravitelBitrix24Mediator\Repository\obj\Debug\net8.0\Repository.csproj.Up2Date
+C:\Projects\DotNet\Web\GravitelBitrix24Mediator\GravitelBitrix24Mediator\Repository\obj\Debug\net8.0\Repository.dll
+C:\Projects\DotNet\Web\GravitelBitrix24Mediator\GravitelBitrix24Mediator\Repository\obj\Debug\net8.0\refint\Repository.dll
+C:\Projects\DotNet\Web\GravitelBitrix24Mediator\GravitelBitrix24Mediator\Repository\obj\Debug\net8.0\Repository.pdb
+C:\Projects\DotNet\Web\GravitelBitrix24Mediator\GravitelBitrix24Mediator\Repository\obj\Debug\net8.0\ref\Repository.dll

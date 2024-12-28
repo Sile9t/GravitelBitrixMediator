@@ -1,7 +1,5 @@
-﻿using Entities.Dtos.Bitrix;
-using Entities.Dtos.Gravitel;
+﻿using Entities.Dtos.Gravitel;
 using Entities.Exceptions;
-using Entities.Responses;
 using Microsoft.AspNetCore.Mvc;
 using Services.Contracts;
 
@@ -13,11 +11,7 @@ namespace GravitelBitrix24Mediator.Controllers
     public class ClientCallHandler : Controller
     {
         private readonly IServiceManager _service;
-        private List<CompanyDto> _companyList = new();
-        private List<DealDto> _dealList = new();
-        private List<LeadDto> _leadList = new();
-        private List<long> _assignedUserIdsList = new();
-
+        
         public ClientCallHandler(IServiceManager service) =>
             _service = service;
 
@@ -41,19 +35,16 @@ namespace GravitelBitrix24Mediator.Controllers
             if (String.Equals(eventInfo.Direction, "out", StringComparison.CurrentCultureIgnoreCase))
                 return Ok(eventInfo);
 
-            //
+            await _service.EventService.HandleEvent(eventInfo);
 
             return Ok(eventInfo);
         }
 
         [HttpPost("history")]
-        public async Task<IActionResult> History()
+        public async Task<IActionResult> History([FromBody] CallRecordDto callRecord)
         {
-            //TODO: Перед завершением звонка надо проверить вызывалась ли его регистрация
-
-            //Если звонок зарегистрирован, завершаем его
-
-            //Добавляем запись в карточку
+            await _service.EventService.HandleHistoryRecord(callRecord);
+            
             return Ok();
         }
     }

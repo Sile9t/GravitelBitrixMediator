@@ -3,6 +3,6 @@
     public interface IServiceManager
     {
         ICallService CallService { get; }
-        IEventSevice EventService { get; }
+        IEventService EventService { get; }
     }
 }

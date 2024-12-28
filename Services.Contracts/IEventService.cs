@@ -4,6 +4,7 @@ namespace Services.Contracts
 {
     public interface IEventService
     {
-        void HandleEvent(EventInfoDto eventInfo);
+        Task HandleEvent(EventInfoDto eventInfo);
+        Task HandleHistoryRecord(CallRecordDto callRecord);
     }
 }

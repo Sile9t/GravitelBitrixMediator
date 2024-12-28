@@ -4,3 +4,10 @@ C:\Projects\DotNet\Web\GravitelBitrix24Mediator\GravitelBitrix24Mediator\OuterSo
 C:\Projects\DotNet\Web\GravitelBitrix24Mediator\GravitelBitrix24Mediator\OuterSource\obj\Debug\net8.0\OuterSource.AssemblyInfo.cs
 C:\Projects\DotNet\Web\GravitelBitrix24Mediator\GravitelBitrix24Mediator\OuterSource\obj\Debug\net8.0\OuterSource.csproj.CoreCompileInputs.cache
 C:\Projects\DotNet\Web\GravitelBitrix24Mediator\GravitelBitrix24Mediator\OuterSource\obj\Debug\net8.0\OuterSource.sourcelink.json
+C:\Projects\DotNet\Web\GravitelBitrix24Mediator\GravitelBitrix24Mediator\OuterSource\bin\Debug\net8.0\OuterSource.deps.json
+C:\Projects\DotNet\Web\GravitelBitrix24Mediator\GravitelBitrix24Mediator\OuterSource\bin\Debug\net8.0\OuterSource.dll
+C:\Projects\DotNet\Web\GravitelBitrix24Mediator\GravitelBitrix24Mediator\OuterSource\bin\Debug\net8.0\OuterSource.pdb
+C:\Projects\DotNet\Web\GravitelBitrix24Mediator\GravitelBitrix24Mediator\OuterSource\obj\Debug\net8.0\OuterSource.dll
+C:\Projects\DotNet\Web\GravitelBitrix24Mediator\GravitelBitrix24Mediator\OuterSource\obj\Debug\net8.0\refint\OuterSource.dll
+C:\Projects\DotNet\Web\GravitelBitrix24Mediator\GravitelBitrix24Mediator\OuterSource\obj\Debug\net8.0\OuterSource.pdb
+C:\Projects\DotNet\Web\GravitelBitrix24Mediator\GravitelBitrix24Mediator\OuterSource\obj\Debug\net8.0\ref\OuterSource.dll

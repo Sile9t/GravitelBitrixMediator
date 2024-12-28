@@ -9,3 +9,14 @@ C:\Projects\DotNet\Web\GravitelBitrix24Mediator\GravitelBitrix24Mediator\Service
 C:\Projects\DotNet\Web\GravitelBitrix24Mediator\GravitelBitrix24Mediator\Services.Contracts\obj\Debug\net8.0\refint\Services.Contracts.dll
 C:\Projects\DotNet\Web\GravitelBitrix24Mediator\GravitelBitrix24Mediator\Services.Contracts\obj\Debug\net8.0\Services.Contracts.pdb
 C:\Projects\DotNet\Web\GravitelBitrix24Mediator\GravitelBitrix24Mediator\Services.Contracts\obj\Debug\net8.0\ref\Services.Contracts.dll
+C:\Projects\DotNet\Web\GravitelBitrix24Mediator\GravitelBitrix24Mediator\Services.Contracts\obj\Debug\net8.0\Services.Contracts.csproj.AssemblyReference.cache
+C:\Projects\DotNet\Web\GravitelBitrix24Mediator\GravitelBitrix24Mediator\Services.Contracts\obj\Debug\net8.0\Services.Contracts.sourcelink.json
+C:\Projects\DotNet\Web\GravitelBitrix24Mediator\GravitelBitrix24Mediator\Services.Contracts\bin\Debug\net8.0\Entities.dll
+C:\Projects\DotNet\Web\GravitelBitrix24Mediator\GravitelBitrix24Mediator\Services.Contracts\bin\Debug\net8.0\OuterSource.dll
+C:\Projects\DotNet\Web\GravitelBitrix24Mediator\GravitelBitrix24Mediator\Services.Contracts\bin\Debug\net8.0\Repository.Contracts.dll
+C:\Projects\DotNet\Web\GravitelBitrix24Mediator\GravitelBitrix24Mediator\Services.Contracts\bin\Debug\net8.0\Repository.dll
+C:\Projects\DotNet\Web\GravitelBitrix24Mediator\GravitelBitrix24Mediator\Services.Contracts\bin\Debug\net8.0\Entities.pdb
+C:\Projects\DotNet\Web\GravitelBitrix24Mediator\GravitelBitrix24Mediator\Services.Contracts\bin\Debug\net8.0\Repository.Contracts.pdb
+C:\Projects\DotNet\Web\GravitelBitrix24Mediator\GravitelBitrix24Mediator\Services.Contracts\bin\Debug\net8.0\Repository.pdb
+C:\Projects\DotNet\Web\GravitelBitrix24Mediator\GravitelBitrix24Mediator\Services.Contracts\bin\Debug\net8.0\OuterSource.pdb
+C:\Projects\DotNet\Web\GravitelBitrix24Mediator\GravitelBitrix24Mediator\Services.Contracts\obj\Debug\net8.0\Services.70B79F52.Up2Date

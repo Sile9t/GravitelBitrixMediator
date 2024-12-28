@@ -8,6 +8,7 @@
     ".NETCoreApp,Version=v8.0": {
       "Services/1.0.0": {
         "dependencies": {
+          "Contracts": "1.0.0",
           "Entities": "1.0.0",
           "Newtonsoft.Json": "13.0.3",
           "RestSharp": "112.1.0",
@@ -33,17 +34,53 @@
           }
         }
       },
+      "Contracts/1.0.0": {
+        "runtime": {
+          "Contracts.dll": {}
+        }
+      },
       "Entities/1.0.0": {
         "dependencies": {
           "Newtonsoft.Json": "13.0.3",
-          "RestSharp": "112.1.0",
-          "Services.Contracts": "1.0.0"
+          "RestSharp": "112.1.0"
         },
         "runtime": {
           "Entities.dll": {}
         }
       },
+      "OuterSource/1.0.0": {
+        "dependencies": {
+          "Newtonsoft.Json": "13.0.3",
+          "RestSharp": "112.1.0"
+        },
+        "runtime": {
+          "OuterSource.dll": {}
+        }
+      },
+      "Repository/1.0.0": {
+        "dependencies": {
+          "Entities": "1.0.0",
+          "OuterSource": "1.0.0",
+          "Repository.Contracts": "1.0.0"
+        },
+        "runtime": {
+          "Repository.dll": {}
+        }
+      },
+      "Repository.Contracts/1.0.0": {
+        "dependencies": {
+          "Entities": "1.0.0"
+        },
+        "runtime": {
+          "Repository.Contracts.dll": {}
+        }
+      },
       "Services.Contracts/1.0.0": {
+        "dependencies": {
+          "Entities": "1.0.0",
+          "Repository": "1.0.0",
+          "Repository.Contracts": "1.0.0"
+        },
         "runtime": {
           "Services.Contracts.dll": {}
         }
@@ -70,7 +107,27 @@
       "path": "restsharp/112.1.0",
       "hashPath": "restsharp.112.1.0.nupkg.sha512"
     },
+    "Contracts/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
     "Entities/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "OuterSource/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Repository/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Repository.Contracts/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""
