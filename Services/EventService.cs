@@ -1,4 +1,5 @@
-﻿using Entities.Dtos.Bitrix;
+﻿using Contracts;
+using Entities.Dtos.Bitrix;
 using Entities.Dtos.Gravitel;
 using Repository.Contracts;
 using Services.Contracts;
@@ -8,10 +9,12 @@ namespace Services
     public class EventService : IEventService
     {
         IRepositoryManager _repo;
+        ILoggerManager _logger;
 
-        public EventService(IRepositoryManager repo)
+        public EventService(IRepositoryManager repo, ILoggerManager logger)
         {
             _repo = repo;
+            _logger = logger;
         }
 
         public async Task HandleEvent(EventInfoDto eventInfo)

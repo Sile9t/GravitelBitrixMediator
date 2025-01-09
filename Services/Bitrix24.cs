@@ -15,7 +15,7 @@ namespace Entities
         //Your client secret (client_secret)
         private const string BX_ClientSecret = "N9NjwzOeh6jhgkhkjhjkhkjk6ZdrzcC4f2";
         //Your Bitrix URL
-        private const string BX_Portal = "https://xxxx.bitrix24.ru";
+        private string BX_Portal = "https://xxxx.bitrix24.ru";
         //OAuth address
         private const string BX_OAuthSite = "https://oauth.bitrix.info/oauth";
         //Change to your Username
@@ -31,6 +31,12 @@ namespace Entities
         private string Cookie;
 
         public Bitrix24() => Connect();
+
+        public Bitrix24(string portalUrl)
+        {
+            BX_Portal = portalUrl;
+            Connect();
+        }
 
         //Connection method for configure OAuth and access 
         private void Connect()

@@ -11,7 +11,7 @@ namespace Entities
     {
         private const string BX_ClientID = "local.58f736938000000000000"; //Ваш Код приложения (client_id)
         private const string BX_ClientSecret = "N9NjwzOeh6jhgkhkjhjkhkjk6ZdrzcC4f2"; //Ваш Ключ приложения (client_secret)
-        private const string BX_Portal = "https://xxxx.bitrix24.ru"; //Адрес вашего портала\сайта в Битрикс24
+        private string BX_Portal = "https://xxxx.bitrix24.ru"; //Адрес вашего портала\сайта в Битрикс24
         private const string BX_OAuthSite = "https://oauth.bitrix.info"; //Этот адрес не изменяйте
 
         //Объявляем приватные служебные поля
@@ -24,7 +24,12 @@ namespace Entities
         //Создаем конструктор с вызовом подключения к Битрикс24 при создании экземпляра данного класса
         public Bitrix24Old()
         {
+            Connect();
+        }
 
+        public Bitrix24Old(string portalUrl)
+        {
+            BX_Portal = portalUrl;
             Connect();
         }
 
