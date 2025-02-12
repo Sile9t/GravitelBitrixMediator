@@ -11,14 +11,14 @@ namespace Services
     public class CallService : ICallService
     {
         private readonly ILoggerManager _logger;
-        private readonly IRepositoryManager _repository;
+        private readonly IBitrixRepositoryManager _repository;
         private List<CompanyDto> _companyList = new();
         private List<DealDto> _dealList = new();
         private List<LeadDto> _leadList = new();
         private List<long> _assignedUserIdsList = new();
 
 
-        public CallService(IRepositoryManager repositoryManager, ILoggerManager logger)
+        public CallService(IBitrixRepositoryManager repositoryManager, ILoggerManager logger)
         {
             _logger = logger;
             _repository = repositoryManager;

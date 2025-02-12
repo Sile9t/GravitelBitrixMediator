@@ -15,6 +15,6 @@ namespace GravitelBitrix24Mediator.Extensions
             services.AddScoped<Bitrix24Old>();
 
         public static void ConfigureRepositoryManager(this IServiceCollection services) =>
-            services.AddScoped<IRepositoryManager, RepositoryManager>();
+            services.AddScoped<IBitrixRepositoryManager, BitrixRepositoryManager>();
     }
 }

@@ -2,6 +2,7 @@ using Contracts;
 using Entities;
 using GravitelBitrix24Mediator.Extensions;
 using NLog;
+using Services;
 using Services.Contracts;
 
 namespace GravitelBitrix24Mediator
@@ -19,6 +20,7 @@ namespace GravitelBitrix24Mediator
 
             builder.Services.ConfigureLoggerService();
             builder.Services.AddTransient<IBitrix, Bitrix24Old>();
+            builder.Services.AddTransient<IGravitel, Gravitel>();
 
             builder.Services.AddControllers();
             builder.Services.AddEndpointsApiExplorer();
@@ -39,7 +41,6 @@ namespace GravitelBitrix24Mediator
             app.UseHttpsRedirection();
 
             app.UseAuthorization();
-
 
             app.MapControllers();
 

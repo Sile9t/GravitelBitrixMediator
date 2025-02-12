@@ -54,3 +54,4 @@ C:\Projects\DotNet\Web\GravitelBitrix24Mediator\GravitelBitrix24Mediator\Gravite
 C:\Projects\DotNet\Web\GravitelBitrix24Mediator\GravitelBitrix24Mediator\GravitelBitrix24Mediator\obj\Debug\net8.0\GravitelBitrix24Mediator.pdb
 C:\Projects\DotNet\Web\GravitelBitrix24Mediator\GravitelBitrix24Mediator\GravitelBitrix24Mediator\obj\Debug\net8.0\GravitelBitrix24Mediator.genruntimeconfig.cache
 C:\Projects\DotNet\Web\GravitelBitrix24Mediator\GravitelBitrix24Mediator\GravitelBitrix24Mediator\obj\Debug\net8.0\ref\GravitelBitrix24Mediator.dll
+C:\Projects\DotNet\Web\GravitelBitrix24Mediator\GravitelBitrix24Mediator\GravitelBitrix24Mediator\obj\Debug\net8.0\GravitelBitrix24Mediator.MvcApplicationPartsAssemblyInfo.cs

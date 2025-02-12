@@ -2,7 +2,7 @@
 
 namespace Repository.Contracts
 {
-    public interface IRepositoryManager
+    public interface IBitrixRepositoryManager
     {
         ITelephonyRepository Telephony { get; }
         ICompanyRepository Company { get; }

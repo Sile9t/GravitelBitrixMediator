@@ -9,7 +9,7 @@ namespace Services
         private Lazy<ICallService> _callService;
         private Lazy<IEventService> _eventService;
 
-        public ServiceManager(IRepositoryManager repositoryManager, ILoggerManager logger)
+        public ServiceManager(IBitrixRepositoryManager repositoryManager, ILoggerManager logger)
         {
             _callService = new Lazy<ICallService>(() => 
                 new CallService(repositoryManager, logger));

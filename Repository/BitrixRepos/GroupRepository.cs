@@ -6,7 +6,7 @@ using System.Text.Json;
 
 namespace Repository.Repos
 {
-    public class GroupRepository : RepositoryBase, IGroupRepository
+    public class GroupRepository : BitrixRepositoryBase, IGroupRepository
     {
         public GroupRepository(Bitrix24Old bitrix) : base(bitrix)
         {

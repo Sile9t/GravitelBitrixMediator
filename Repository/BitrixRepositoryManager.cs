@@ -5,7 +5,7 @@ using Repository.Repos;
 
 namespace Repository
 {
-    public class RepositoryManager : IRepositoryManager
+    public class BitrixRepositoryManager : IBitrixRepositoryManager
     {
         private readonly Bitrix24Old _bitrix;
         private readonly Lazy<ITelephonyRepository> _telephony;
@@ -15,7 +15,7 @@ namespace Repository
         private readonly Lazy<IContactRepository> _contact;
         private readonly Lazy<IGroupRepository> _group;
 
-        public RepositoryManager(Bitrix24Old bitrix)
+        public BitrixRepositoryManager(Bitrix24Old bitrix)
         {
             _bitrix = bitrix;
             _telephony = new Lazy<ITelephonyRepository>(() => new TelephonyRepository(_bitrix));

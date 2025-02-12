@@ -6,7 +6,7 @@ using System.Text.Json;
 
 namespace Repository.Repos
 {
-    public class LeadRepository : RepositoryBase, ILeadRepository
+    public class LeadRepository : BitrixRepositoryBase, ILeadRepository
     {
         public LeadRepository(Bitrix24Old bitrix) : base(bitrix)
         {

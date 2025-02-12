@@ -1,6 +1,0 @@
-@GravitelBitrix24Mediator_HostAddress = http://localhost:5131
-
-GET {{GravitelBitrix24Mediator_HostAddress}}/weatherforecast/
-Accept: application/json
-
-###

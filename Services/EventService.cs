@@ -8,10 +8,10 @@ namespace Services
 {
     public class EventService : IEventService
     {
-        IRepositoryManager _repo;
+        IBitrixRepositoryManager _repo;
         ILoggerManager _logger;
 
-        public EventService(IRepositoryManager repo, ILoggerManager logger)
+        public EventService(IBitrixRepositoryManager repo, ILoggerManager logger)
         {
             _repo = repo;
             _logger = logger;

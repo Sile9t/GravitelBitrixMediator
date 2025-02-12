@@ -7,7 +7,7 @@ using System.Text.Json;
 
 namespace Repository.Repos
 {
-    public class TelephonyRepository : RepositoryBase, ITelephonyRepository
+    public class TelephonyRepository : BitrixRepositoryBase, ITelephonyRepository
     {
         public TelephonyRepository(Bitrix24Old bitrix) : base(bitrix)
         {
