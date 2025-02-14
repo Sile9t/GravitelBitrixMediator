@@ -8,24 +8,26 @@ namespace Services
 {
     public class EventService : IEventService
     {
-        IBitrixRepositoryManager _repo;
+        IBitrixServiceManager _bitrix;
+        IGra _gravitel;
         ILoggerManager _logger;
 
-        public EventService(IBitrixRepositoryManager repo, ILoggerManager logger)
+        public EventService(IBitrixServiceManager bitrix, IGravitelServiceManager gravitel, ILoggerManager logger)
         {
-            _repo = repo;
+            _bitrix = bitrix;
             _logger = logger;
+            _gravitel = gravitel;
         }
 
         public async Task HandleEvent(EventInfoDto eventInfo)
         {
             //Ищем Id пользователя
-            var assignedUsers = _repo.Contact
+            var assignedUsers = _bitrix.Contact
                 .GetContactsByFilter($"'PHONE' => {eventInfo.Phone}")!.Result;
-            var clientContact = _repo.Contact
+            var clientContact = _bitrix.Contact
                 .GetContactsByFilter($"'PHONE' => {eventInfo.Client}")!.Result;
             //Ищем сделки клиента
-            var deals = _repo.Deal
+            var deals = _bitrix.Deal
                 .GetDealsByFilter($"'LOGIC' => 'OR'," +
                     $"[ 'CONTACT_IDS' => {clientContact}," +
                     $"'CONTACT_ID' => {clientContact} ]," +
@@ -33,19 +35,19 @@ namespace Services
                     $"'COMPANY_IDS => {assignedUsers!.First().CompanyIds}'" +
                     "'CLOSED' => 'N'");
             //Ишем лида клиента
-            var leadsForClient = _repo.Lead
+            var leadsForClient = _bitrix.Lead
                 .GetLeadsByFilter($"'LOGIC' => 'OR'," +
                         $"[ 'CONTACT_IDS' => {clientContact!.First().Id}," +
                         $"'CONTACT_ID' => {clientContact!.First().Id} ]");
             //Ищем связанные с компанией ответственного номера
-            var companyContacts = _repo.Contact
+            var companyContacts = _bitrix.Contact
                 .GetContactsByFilter($"'COMPANY_ID => {assignedUsers!.First().CompanyId}'");
             //На основании статуса звонка выбираем алгоритм
             switch (eventInfo.Stage)
             {
                 case "alerting": //Активный дозвон
                     //Ищем по номеру extension группу, в которую входит пользователь
-                    var userGroup = _repo.Group.GetGroup(eventInfo.Extension);
+                    var userGroup = _bitrix.Group.GetGroup(eventInfo.Extension);
                     //Если это отдел продаж и у клиента нет ни лида ни сделки, создаем нового лида
                     if ((userGroup is not null) && 
                         (userGroup.Total > 0) &&
@@ -63,7 +65,7 @@ namespace Services
                                 AssignedById = assignedUsers!.First().Id
                             };
 
-                            var createdLeadResponse = _repo.Lead.CreateLead(newLead);
+                            var createdLeadResponse = _bitrix.Lead.CreateLead(newLead);
                             if ((createdLeadResponse is not null) &&
                                 (createdLeadResponse.HasResult))
                             {
@@ -76,7 +78,7 @@ namespace Services
                                 };
 
                                 //Регистрируем звонок с созданным лидом
-                                var registredCall = _repo.Telephony
+                                var registredCall = _bitrix.Telephony
                                     .RegisterCall(newCall);
                             }
                         }
@@ -91,24 +93,24 @@ namespace Services
                             };
 
                             //Регистрируем звонок с созданным лидом
-                            var registredCall = _repo.Telephony
+                            var registredCall = _bitrix.Telephony
                                 .RegisterCall(newCall);
                         }
                     }
                     //Если звонок поступил не в отдел продаж,
                     //показываем вызов всем пользователям (т.е. пропускаем)
-                    _repo.Telephony
+                    _bitrix.Telephony
                         .ShowCall(eventInfo.Id.ToString(), companyContacts!.Result!.Select(c => c.Id).ToArray());
                     break;
                 case "talking": //Активный разговор
                     //В сделке меняем ID ответственного за сделку на ID ответившего на звонок
                     var dealId = deals!.Result!.First().Id;
-                    var dealUpdated = _repo.Deal
+                    var dealUpdated = _bitrix.Deal
                         .UpdateDeal(dealId, $"'ASSIGNED_BY_ID' => {assignedUsers!.First().Id}");
                     break;
                 case "released": //Звонок завершен
                     //Скрываем карточку контакта
-                    _repo.Telephony
+                    _bitrix.Telephony
                         .HideCall(eventInfo.Id.ToString(), companyContacts!.Result!.Select(c => c.Id).ToArray());
                     break;
             }
@@ -129,9 +131,9 @@ namespace Services
                 };
 
                 //Пробуем зарегистрировать звонок
-                _repo.Telephony.RegisterCall(newDeal);
+                _bitrix.Telephony.RegisterCall(newDeal);
                 //Ищем Id сотрудника ответившего на звонок
-                var userId = _repo.Contact
+                var userId = _bitrix.Contact
                     .GetContactsByFilter($"'PHONE' => {callRecord.Phone}")!.Result!.First().Id;
                 //Создаем запись о звонке
                 var callInfo = new CallInfoDto
@@ -145,10 +147,10 @@ namespace Services
                 };
 
                 //Завершаем звонок
-                _repo.Telephony.FinishCall(callInfo);
+                _bitrix.Telephony.FinishCall(callInfo);
 
                 //Добавляем запись в карточку
-                _repo.Telephony.AttachRecord(callRecord.Id, callRecord.Record!);
+                _bitrix.Telephony.AttachRecord(callRecord.Id, callRecord.Record!);
             }
             //Если звонок не входяший - игнорируем
         }

@@ -5,6 +5,6 @@ namespace Repository.Contracts.Repos
 {
     public interface IGroupRepository
     {
-        ListResponse<GroupDto>? GetGroup(long id);
+        ListResponse<GroupDto>? GetGroupsByFilter(string filter);
     }
 }

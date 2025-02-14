@@ -10,11 +10,14 @@ namespace GravitelBitrix24Mediator.Extensions
     {
         public static void ConfigureLoggerService(this IServiceCollection services) =>
             services.AddSingleton<ILoggerManager, LoggerManager>();
-
-        public static void ConfigureOuterSource(this IServiceCollection services) =>
-            services.AddScoped<Bitrix24Old>();
+        
+        public static void ConfigureOuterSources(this IServiceCollection services)
+        {
+            services.AddTransient<Bitrix24Old>();
+            services.AddTransient<Gravitel>();
+        }
 
         public static void ConfigureRepositoryManager(this IServiceCollection services) =>
-            services.AddScoped<IBitrixRepositoryManager, BitrixRepositoryManager>();
+            services.AddTransient<IBitrixRepositoryManager, BitrixRepositoryManager>();
     }
 }

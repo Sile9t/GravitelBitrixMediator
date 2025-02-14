@@ -1,9 +1,9 @@
 using Contracts;
-using Entities;
 using GravitelBitrix24Mediator.Extensions;
 using NLog;
+using OuterSource;
 using Services;
-using Services.Contracts;
+using StackExchange.Redis;
 
 namespace GravitelBitrix24Mediator
 {
@@ -19,8 +19,15 @@ namespace GravitelBitrix24Mediator
                 string.Concat(Directory.GetCurrentDirectory(), @"/nlog.config"));
 
             builder.Services.ConfigureLoggerService();
-            builder.Services.AddTransient<IBitrix, Bitrix24Old>();
-            builder.Services.AddTransient<IGravitel, Gravitel>();
+            builder.Services.AddStackExchangeRedisCache(options =>
+            {
+                options.Configuration = builder.Configuration.GetConnectionString("RedisConn");
+                options.InstanceName = "Cache";
+            });
+            builder.Services.AddTransient<RedisCacheService>();
+            builder.Services.ConfigureOuterSources();
+            //builder.Services.AddTransient<Bitrix24Old>();
+            //builder.Services.AddTransient<Gravitel>();
 
             builder.Services.AddControllers();
             builder.Services.AddEndpointsApiExplorer();

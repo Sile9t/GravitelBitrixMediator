@@ -11,9 +11,12 @@ namespace Repository.GravitelRepos
             
         }
 
-        public async Task<List<NumberDto>?> GetNumbers()
+        public async Task<IEnumerable<NumberDto>> GetNumbers()
         {
             var response = await _gravitel.SendCommand<List<NumberDto>>(HttpMethod.Get, "numbers");
+
+            if (response is null)
+                return Enumerable.Empty<NumberDto>();
 
             return response;
         }

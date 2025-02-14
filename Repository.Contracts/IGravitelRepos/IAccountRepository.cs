@@ -4,6 +4,6 @@ namespace Repository.Contracts.IGravitelRepos
 {
     public interface IAccountRepository
     {
-        Task<List<AccountDto>?> GetAccounts();
+        Task<IEnumerable<AccountDto>> GetAccounts();
     }
 }

@@ -1,38 +1,37 @@
 ﻿using Contracts;
 using Entities.Dtos.Bitrix;
 using Entities.Dtos.Gravitel;
-using Entities.Exceptions;
 using Repository.Contracts;
 using Services.Contracts;
-using System.Dynamic;
 
 namespace Services
 {
     public class CallService : ICallService
     {
         private readonly ILoggerManager _logger;
-        private readonly IBitrixRepositoryManager _repository;
+        private readonly IBitrixRepositoryManager _bitrix;
+        private readonly IGravitelRepositoryManager _gravitel;
         private List<CompanyDto> _companyList = new();
         private List<DealDto> _dealList = new();
         private List<LeadDto> _leadList = new();
         private List<long> _assignedUserIdsList = new();
 
 
-        public CallService(IBitrixRepositoryManager repositoryManager, ILoggerManager logger)
+        public CallService(IBitrixRepositoryManager bitrix, IGravitelRepositoryManager gravitel, ILoggerManager logger)
         {
             _logger = logger;
-            _repository = repositoryManager;
+            _bitrix = bitrix;
+            _gravitel = gravitel;
         }
 
-        //TOOD: end up method
         public (string companyTitle, string userPhoneInner) 
             GetCompanyTitleAndUserPhoneInnerForClientDeal(GravitelClientCallInfoDto callInfo)
         {
-            var clientContactInfo = _repository.Telephony
+            var clientContactInfo = _bitrix.Telephony
                 .GetCrmEntityByPhone(callInfo.ClientPhone);
 
             //Ищем информацию о клиенте через фильтр контактов по номеру телефона
-            var clientsList = _repository.Contact
+            var clientsList = _bitrix.Contact
                 .GetContactsByFilter(filter: $"'PHONE': {callInfo.ClientPhone}");
 
             if ((clientsList is not null) &&
@@ -42,7 +41,7 @@ namespace Services
                 long firstClientId = clientsList.Result![0].Id;
 
                 //Ищем компании привязанные к номеру пользователя
-                var companiesForUser = _repository.Company
+                var companiesForUser = _bitrix.Company
                     .GetCompaniesByFilter($"'PHONE': {callInfo.Phone}");
 
                 //Инициализируем переменные названия компании и внуртеннего номера ответственного
@@ -54,7 +53,7 @@ namespace Services
                 {
                     foreach (var company in companiesForUser.Result!)
                     {
-                        var deals = _repository.Deal
+                        var deals = _bitrix.Deal
                             .GetDealsByFilter($"'LOGIC' => 'OR'," +
                                 $"[ 'CONTACT_IDS' => {clientContactInfo}," +
                                 $"'CONTACT_ID' => {firstClientId} ]," +
@@ -83,7 +82,7 @@ namespace Services
                     }
 
                     //Ищем номер первого ответственного пользователя
-                    var assignedUserContact = _repository.Contact
+                    var assignedUserContact = _bitrix.Contact
                         .GetContactsByFilter($"'ID': {_assignedUserIdsList.First()}");
 
                     if ((assignedUserContact is not null) &&
@@ -93,7 +92,7 @@ namespace Services
                         var assignedUserPhone = assignedUserContact.Result[0].Phone?[0].Value;
 
                         //Ищем контакт ответственного пользователя
-                        var assignedUserEntity = _repository.Telephony
+                        var assignedUserEntity = _bitrix.Telephony
                             .GetCrmEntityByPhone(assignedUserPhone!);
 
                         if ((assignedUserEntity is not null) &&
@@ -104,7 +103,7 @@ namespace Services
                 else
                 {
                     //Если сделок нету, ищем лида по ID клиента
-                    var leadsForClient = _repository.Lead
+                    var leadsForClient = _bitrix.Lead
                         .GetLeadsByFilter($"'LOGIC' => 'OR'," +
                                 $"[ 'CONTACT_IDS' => {firstClientId}," +
                                 $"'CONTACT_ID' => {firstClientId} ]");
@@ -117,7 +116,7 @@ namespace Services
 
                         if (firstLead.Phone != Array.Empty<PhoneDto>())
                         {
-                            var assignedUserEntity = _repository.Telephony
+                            var assignedUserEntity = _bitrix.Telephony
                                 .GetCrmEntityByPhone(firstLead.Phone?[0].Value!);
 
                             finalCompanyTitle = firstLead.CompanyTitle!;

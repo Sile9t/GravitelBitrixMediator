@@ -10,9 +10,12 @@ namespace Repository.GravitelRepos
         {
             
         }
-        public async Task<List<AccountDto>?> GetAccounts()
+        public async Task<IEnumerable<AccountDto>> GetAccounts()
         {
-            var response = await _gravitel.SendCommand<List<AccountDto>>(HttpMethod.Get, "accounts");
+            var response = await _gravitel.SendCommand<IEnumerable<AccountDto>>(HttpMethod.Get, "accounts");
+
+            if (response is null)
+                return Enumerable.Empty<AccountDto>();
 
             return response;
         }

@@ -11,9 +11,12 @@ namespace Repository.GravitelRepos
             
         }
 
-        public async Task<List<GroupDto>?> GetGroups()
+        public async Task<IEnumerable<GroupDto>> GetGroups()
         {
             var response = await _gravitel.SendCommand<List<GroupDto>>(HttpMethod.Get, "groups");
+
+            if (response is null)
+                return Enumerable.Empty<GroupDto>();
 
             return response;
         }

@@ -55,3 +55,12 @@ C:\Projects\DotNet\Web\GravitelBitrix24Mediator\GravitelBitrix24Mediator\Gravite
 C:\Projects\DotNet\Web\GravitelBitrix24Mediator\GravitelBitrix24Mediator\GravitelBitrix24Mediator\obj\Debug\net8.0\GravitelBitrix24Mediator.genruntimeconfig.cache
 C:\Projects\DotNet\Web\GravitelBitrix24Mediator\GravitelBitrix24Mediator\GravitelBitrix24Mediator\obj\Debug\net8.0\ref\GravitelBitrix24Mediator.dll
 C:\Projects\DotNet\Web\GravitelBitrix24Mediator\GravitelBitrix24Mediator\GravitelBitrix24Mediator\obj\Debug\net8.0\GravitelBitrix24Mediator.MvcApplicationPartsAssemblyInfo.cs
+C:\Projects\DotNet\Web\GravitelBitrix24Mediator\GravitelBitrix24Mediator\GravitelBitrix24Mediator\bin\Debug\net8.0\Microsoft.Extensions.Caching.Abstractions.dll
+C:\Projects\DotNet\Web\GravitelBitrix24Mediator\GravitelBitrix24Mediator\GravitelBitrix24Mediator\bin\Debug\net8.0\Microsoft.Extensions.Caching.StackExchangeRedis.dll
+C:\Projects\DotNet\Web\GravitelBitrix24Mediator\GravitelBitrix24Mediator\GravitelBitrix24Mediator\bin\Debug\net8.0\Microsoft.Extensions.DependencyInjection.Abstractions.dll
+C:\Projects\DotNet\Web\GravitelBitrix24Mediator\GravitelBitrix24Mediator\GravitelBitrix24Mediator\bin\Debug\net8.0\Microsoft.Extensions.Logging.Abstractions.dll
+C:\Projects\DotNet\Web\GravitelBitrix24Mediator\GravitelBitrix24Mediator\GravitelBitrix24Mediator\bin\Debug\net8.0\Microsoft.Extensions.Options.dll
+C:\Projects\DotNet\Web\GravitelBitrix24Mediator\GravitelBitrix24Mediator\GravitelBitrix24Mediator\bin\Debug\net8.0\Microsoft.Extensions.Primitives.dll
+C:\Projects\DotNet\Web\GravitelBitrix24Mediator\GravitelBitrix24Mediator\GravitelBitrix24Mediator\bin\Debug\net8.0\Pipelines.Sockets.Unofficial.dll
+C:\Projects\DotNet\Web\GravitelBitrix24Mediator\GravitelBitrix24Mediator\GravitelBitrix24Mediator\bin\Debug\net8.0\StackExchange.Redis.dll
+C:\Projects\DotNet\Web\GravitelBitrix24Mediator\GravitelBitrix24Mediator\GravitelBitrix24Mediator\bin\Debug\net8.0\System.Diagnostics.DiagnosticSource.dll
