@@ -9,39 +9,38 @@ namespace Services
     public class CallService : ICallService
     {
         private readonly ILoggerManager _logger;
-        private readonly IBitrixRepositoryManager _bitrix;
-        private readonly IGravitelRepositoryManager _gravitel;
+        private readonly IBitrixServiceManager _bitrix;
+        private readonly IGravitelServiceManager _gravitel;
         private List<CompanyDto> _companyList = new();
         private List<DealDto> _dealList = new();
         private List<LeadDto> _leadList = new();
         private List<long> _assignedUserIdsList = new();
 
 
-        public CallService(IBitrixRepositoryManager bitrix, IGravitelRepositoryManager gravitel, ILoggerManager logger)
+        public CallService(IBitrixServiceManager bitrix, IGravitelServiceManager gravitel, ILoggerManager logger)
         {
             _logger = logger;
             _bitrix = bitrix;
             _gravitel = gravitel;
         }
 
-        public (string companyTitle, string userPhoneInner) 
+        public async Task<(string companyTitle, string userPhoneInner)> 
             GetCompanyTitleAndUserPhoneInnerForClientDeal(GravitelClientCallInfoDto callInfo)
         {
-            var clientContactInfo = _bitrix.Telephony
+            var clientContactInfo = await _bitrix.Telephony
                 .GetCrmEntityByPhone(callInfo.ClientPhone);
 
             //Ищем информацию о клиенте через фильтр контактов по номеру телефона
-            var clientsList = _bitrix.Contact
+            var clientsList = await _bitrix.Contact
                 .GetContactsByFilter(filter: $"'PHONE': {callInfo.ClientPhone}");
 
-            if ((clientsList is not null) &&
-                (clientsList.Total > 0))
+            if (clientsList.Any())
             {
                 //Берем ID первого контакта
-                long firstClientId = clientsList.Result![0].Id;
+                long firstClientId = clientsList.First().Id;
 
                 //Ищем компании привязанные к номеру пользователя
-                var companiesForUser = _bitrix.Company
+                var companiesForUser = await _bitrix.Company
                     .GetCompaniesByFilter($"'PHONE': {callInfo.Phone}");
 
                 //Инициализируем переменные названия компании и внуртеннего номера ответственного
@@ -49,24 +48,24 @@ namespace Services
                 string finalUserPhoneInner = "";
 
                 //Проходим по списку компаний и ищем у них октрытые на клиента сделки
-                if ((companiesForUser is not null) && (companiesForUser.Total > 0))
+                if (companiesForUser.Any())
                 {
-                    foreach (var company in companiesForUser.Result!)
+                    foreach (var company in companiesForUser)
                     {
-                        var deals = _bitrix.Deal
+                        var deals = await _bitrix.Deal
                             .GetDealsByFilter($"'LOGIC' => 'OR'," +
                                 $"[ 'CONTACT_IDS' => {clientContactInfo}," +
                                 $"'CONTACT_ID' => {firstClientId} ]," +
                                 $"'COMPANY_ID' => {company.Id}," +
                                 "'CLOSED' => 'N'");
 
-                        if ((deals is not null) && (deals.Total > 0))
+                        if (deals.Count() > 0)
                         {
                             //Если сделок несколько добавляем компанию в локальный список
                             _companyList.Add(company);
 
                             //Проходим по всем сделкам и записываем ID ответсвенных за них в локальный список
-                            foreach (var deal in deals.Result!)
+                            foreach (var deal in deals)
                             {
                                 _dealList.Add(deal);
 
@@ -82,48 +81,43 @@ namespace Services
                     }
 
                     //Ищем номер первого ответственного пользователя
-                    var assignedUserContact = _bitrix.Contact
+                    var assignedUserContact = await _bitrix.Contact
                         .GetContactsByFilter($"'ID': {_assignedUserIdsList.First()}");
 
-                    if ((assignedUserContact is not null) &&
-                        (assignedUserContact.Total > 0) &&
-                        (assignedUserContact.Result![0].Phone != Array.Empty<PhoneDto>()))
+                    if ((assignedUserContact.Any()) &&
+                        (assignedUserContact.First().Phone.Count() > 0))
                     {
-                        var assignedUserPhone = assignedUserContact.Result[0].Phone?[0].Value;
+                        var assignedUserPhone = assignedUserContact.First().Phone[0].Value;
 
                         //Ищем контакт ответственного пользователя
-                        var assignedUserEntity = _bitrix.Telephony
+                        var assignedUserEntity = await _bitrix.Telephony
                             .GetCrmEntityByPhone(assignedUserPhone!);
 
-                        if ((assignedUserEntity is not null) &&
-                            (assignedUserEntity.Length > 0))
-                            finalUserPhoneInner = assignedUserEntity[0].AssignedBy[0].UserPhoneInner;
+                        if (assignedUserEntity.Any())
+                            finalUserPhoneInner = assignedUserEntity.First().AssignedBy[0].UserPhoneInner;
                     }
                 }
                 else
                 {
                     //Если сделок нету, ищем лида по ID клиента
-                    var leadsForClient = _bitrix.Lead
+                    var leadsForClient = await _bitrix.Lead
                         .GetLeadsByFilter($"'LOGIC' => 'OR'," +
                                 $"[ 'CONTACT_IDS' => {firstClientId}," +
                                 $"'CONTACT_ID' => {firstClientId} ]");
-                    if ((leadsForClient is not null) &&
-                        (leadsForClient.Total > 0))
+                    if (leadsForClient.Any())
                     {
-                        _leadList.AddRange(leadsForClient.Result!);
+                        _leadList.AddRange(leadsForClient);
                         //Если лидов несколько, берем контакт ответственного за первый лид
-                        var firstLead = leadsForClient.Result![0];
+                        var firstLead = leadsForClient.First();
 
-                        if (firstLead.Phone != Array.Empty<PhoneDto>())
+                        if (firstLead.Phone.Length > 0)
                         {
-                            var assignedUserEntity = _bitrix.Telephony
+                            var assignedUserEntity = await _bitrix.Telephony
                                 .GetCrmEntityByPhone(firstLead.Phone?[0].Value!);
 
                             finalCompanyTitle = firstLead.CompanyTitle!;
-                            if ((assignedUserEntity is not null) &&
-                                (assignedUserEntity != Array.Empty<CRMEntityDto>()) &&
-                                (assignedUserEntity[0].AssignedBy != Array.Empty<AssignedEntityDto>()))
-                                finalUserPhoneInner = assignedUserEntity[0].AssignedBy[0].UserPhoneInner;
+                            if (assignedUserEntity.First().AssignedBy.Any())
+                                finalUserPhoneInner = assignedUserEntity.First().AssignedBy.First().UserPhoneInner;
                         }
                     }
                 }

@@ -9,7 +9,7 @@ namespace Services
     public class EventService : IEventService
     {
         IBitrixServiceManager _bitrix;
-        IGra _gravitel;
+        IGravitelServiceManager _gravitel;
         ILoggerManager _logger;
 
         public EventService(IBitrixServiceManager bitrix, IGravitelServiceManager gravitel, ILoggerManager logger)
@@ -22,12 +22,12 @@ namespace Services
         public async Task HandleEvent(EventInfoDto eventInfo)
         {
             //Ищем Id пользователя
-            var assignedUsers = _bitrix.Contact
-                .GetContactsByFilter($"'PHONE' => {eventInfo.Phone}")!.Result;
-            var clientContact = _bitrix.Contact
-                .GetContactsByFilter($"'PHONE' => {eventInfo.Client}")!.Result;
+            var assignedUsers = await _bitrix.Contact
+                .GetContactsByFilter($"'PHONE' => {eventInfo.Phone}");
+            var clientContact = await _bitrix.Contact
+                .GetContactsByFilter($"'PHONE' => {eventInfo.Client}");
             //Ищем сделки клиента
-            var deals = _bitrix.Deal
+            var deals = await _bitrix.Deal
                 .GetDealsByFilter($"'LOGIC' => 'OR'," +
                     $"[ 'CONTACT_IDS' => {clientContact}," +
                     $"'CONTACT_ID' => {clientContact} ]," +
@@ -35,26 +35,27 @@ namespace Services
                     $"'COMPANY_IDS => {assignedUsers!.First().CompanyIds}'" +
                     "'CLOSED' => 'N'");
             //Ишем лида клиента
-            var leadsForClient = _bitrix.Lead
+            var leadsForClient = await _bitrix.Lead
                 .GetLeadsByFilter($"'LOGIC' => 'OR'," +
                         $"[ 'CONTACT_IDS' => {clientContact!.First().Id}," +
-                        $"'CONTACT_ID' => {clientContact!.First().Id} ]");
+                        $" 'CONTACT_ID' => {clientContact!.First().Id} ]");
             //Ищем связанные с компанией ответственного номера
-            var companyContacts = _bitrix.Contact
+            var companyContacts = await _bitrix.Contact
                 .GetContactsByFilter($"'COMPANY_ID => {assignedUsers!.First().CompanyId}'");
             //На основании статуса звонка выбираем алгоритм
             switch (eventInfo.Stage)
             {
                 case "alerting": //Активный дозвон
                     //Ищем по номеру extension группу, в которую входит пользователь
-                    var userGroup = _bitrix.Group.GetGroup(eventInfo.Extension);
+                    var userGroups = await _bitrix.Group.GetGroupsByFilter($"ID => {eventInfo.Extension}");
+                    var gravitelGroups = await _gravitel.Group.GetGroups();
+                    var gravitelGroup = gravitelGroups.FirstOrDefault(g => g.Extension == eventInfo.Extension.ToString() && g.Name!.Equals("Отдел продаж", StringComparison.InvariantCultureIgnoreCase));
                     //Если это отдел продаж и у клиента нет ни лида ни сделки, создаем нового лида
-                    if ((userGroup is not null) && 
-                        (userGroup.Total > 0) &&
-                        (String.Equals(userGroup.Result!.First().Name, "Отдел продаж", StringComparison.InvariantCultureIgnoreCase)) &&
-                        ((leadsForClient is not null) && (leadsForClient.IsSuccesful) && (leadsForClient.Total == 0)))
+                    if (userGroups.Any(g => string.Equals(g.Name, "Отдел продаж", StringComparison.InvariantCultureIgnoreCase)) &&
+                        (gravitelGroup is not null) &&
+                        (leadsForClient.Count() > 0))
                     {
-                        if ((deals is not null) && (deals.IsSuccesful) && (deals.Total == 0))
+                        if ((deals.Count() > 0))
                         {
                             var newLead = new LeadForCreationDto
                             {
@@ -65,53 +66,36 @@ namespace Services
                                 AssignedById = assignedUsers!.First().Id
                             };
 
-                            var createdLeadResponse = _bitrix.Lead.CreateLead(newLead);
-                            if ((createdLeadResponse is not null) &&
-                                (createdLeadResponse.HasResult))
-                            {
-                                var newCall = new DealForCallDto
-                                {
-                                    UserPhoneInner = eventInfo.Direction,
-                                    LineNumber = eventInfo.Phone!,
-                                    PhoneNumber = eventInfo.Client!,
-                                    Type = eventInfo.Direction == "in" ? 1 : 2
-                                };
-
-                                //Регистрируем звонок с созданным лидом
-                                var registredCall = _bitrix.Telephony
-                                    .RegisterCall(newCall);
-                            }
+                            var createdLeadResponse = await _bitrix.Lead.CreateLead(newLead);
                         }
-                        else
+
+                        var newCall = new DealForCallDto
                         {
-                            var newCall = new DealForCallDto
-                            {
-                                UserPhoneInner = eventInfo.Direction,
-                                LineNumber = eventInfo.Phone!,
-                                PhoneNumber = eventInfo.Client!,
-                                Type = eventInfo.Direction == "in" ? 1 : 2
-                            };
+                            UserPhoneInner = eventInfo.Direction,
+                            LineNumber = eventInfo.Phone!,
+                            PhoneNumber = eventInfo.Client!,
+                            Type = eventInfo.Direction == "in" ? 1 : 2
+                        };
 
-                            //Регистрируем звонок с созданным лидом
-                            var registredCall = _bitrix.Telephony
-                                .RegisterCall(newCall);
-                        }
+                        //Регистрируем звонок
+                        var registredCall = _bitrix.Telephony
+                            .RegisterCall(newCall);
                     }
                     //Если звонок поступил не в отдел продаж,
                     //показываем вызов всем пользователям (т.е. пропускаем)
-                    _bitrix.Telephony
-                        .ShowCall(eventInfo.Id.ToString(), companyContacts!.Result!.Select(c => c.Id).ToArray());
+                    await _bitrix.Telephony
+                        .ShowCall(eventInfo.Id.ToString(), companyContacts!.Select(c => c.Id).ToArray());
                     break;
                 case "talking": //Активный разговор
                     //В сделке меняем ID ответственного за сделку на ID ответившего на звонок
-                    var dealId = deals!.Result!.First().Id;
+                    var dealId = deals!.First().Id;
                     var dealUpdated = _bitrix.Deal
                         .UpdateDeal(dealId, $"'ASSIGNED_BY_ID' => {assignedUsers!.First().Id}");
                     break;
                 case "released": //Звонок завершен
                     //Скрываем карточку контакта
-                    _bitrix.Telephony
-                        .HideCall(eventInfo.Id.ToString(), companyContacts!.Result!.Select(c => c.Id).ToArray());
+                    await _bitrix.Telephony
+                        .HideCall(eventInfo.Id.ToString(), companyContacts!.Select(c => c.Id).ToArray());
                     break;
             }
         }
@@ -131,7 +115,7 @@ namespace Services
                 };
 
                 //Пробуем зарегистрировать звонок
-                _bitrix.Telephony.RegisterCall(newDeal);
+                await _bitrix.Telephony.RegisterCall(newDeal);
                 //Ищем Id сотрудника ответившего на звонок
                 var userId = _bitrix.Contact
                     .GetContactsByFilter($"'PHONE' => {callRecord.Phone}")!.Result!.First().Id;
@@ -147,10 +131,10 @@ namespace Services
                 };
 
                 //Завершаем звонок
-                _bitrix.Telephony.FinishCall(callInfo);
+                await _bitrix.Telephony.FinishCall(callInfo);
 
                 //Добавляем запись в карточку
-                _bitrix.Telephony.AttachRecord(callRecord.Id, callRecord.Record!);
+                await _bitrix.Telephony.AttachRecord(callRecord.Id, callRecord.Record!);
             }
             //Если звонок не входяший - игнорируем
         }

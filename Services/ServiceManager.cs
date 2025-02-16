@@ -7,11 +7,10 @@ namespace Services
 {
     public class ServiceManager
     {
-        private Lazy<IDistributedCache> _cache;
         private Lazy<ICallService> _callService;
         private Lazy<IEventService> _eventService;
 
-        public ServiceManager(IBitrixRepositoryManager bitrix, IGravitelRepositoryManager gravitel, ILoggerManager logger)
+        public ServiceManager(IBitrixServiceManager bitrix, IGravitelServiceManager gravitel, ILoggerManager logger)
         {
             _callService = new Lazy<ICallService>(() => 
                 new CallService(bitrix, gravitel, logger));

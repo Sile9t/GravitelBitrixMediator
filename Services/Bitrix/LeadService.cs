@@ -40,10 +40,10 @@ namespace Services.Bitrix
             if (cachedData is null)
             {
                 var response = _repo.Lead.GetLeadsByFilter(filter);
-                var leads = (response is not null && response.IsSuccesful) ? response.Result : Enumerable.Empty<LeadDto>();
+                IEnumerable<LeadDto> leads = (response is not null && response.IsSuccesful) ? response.Result! : [];
                 await _cache.SetCacheData(key, leads, TimeSpan.FromSeconds(60));
 
-                return leads!;
+                return leads;
             }
 
             return cachedData;
